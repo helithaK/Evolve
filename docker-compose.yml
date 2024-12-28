@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: cloth
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - scrapy_network
+
+  scrapy:
+    build:
+      context: ./Scraper/
+    container_name: scrapy_container
+    # command: >
+    #   sh -c "python3 ./schema/dbInit.py && scrapy crawl cherri -o test.json"
+    environment:
+      - HOST=postgres_db
+      - USER=user
+      - DATABASE=cloth
+      - PORT=5432
+      - PASSWORD=password
+    depends_on:
+      - postgres
+    networks:
+      - scrapy_network
+    # command: scrapy crawl cherri  # or any other scrapy command
+
+networks:
+  scrapy_network:
+    driver: bridge
+
+volumes:
+  postgres_data:

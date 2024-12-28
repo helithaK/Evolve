@@ -110,4 +110,4 @@ class SavingToPostgreSqlPipeline(object):
             self.connection.commit()
         except Exception as e:
             self.connection.rollback()
-            print("Insertion of new table Error: ", e)
+            print("Insertion of new table Error: ", e);
