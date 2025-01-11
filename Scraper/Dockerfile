@@ -27,4 +27,4 @@ COPY . /app
 ENV PYTHONPATH=/app
 
 # Default command to run Scrapy spider
-# CMD ["scrapy", "crawl", "cherri", "-o", "test.json"]
+CMD ["scrapy", "crawl", "cherri", "-o", "test.json"]
