@@ -1,0 +1,47 @@
+package com.backend.evolve.entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+import java.util.UUID;
+
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class Product {
+
+    @Id
+    @GeneratedValue // Automatically generates UUID values
+    @Column(columnDefinition = "UUID")
+    private UUID id;
+
+    @Column(nullable = false, length = 255)
+    private String title;
+
+    @Column(nullable = false, length = 20)
+    private String shopName;
+
+    @Column(nullable = false, length = 50)
+    private String price;
+
+    @Column(nullable = false)
+    private boolean availability;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String description;
+
+    @Column(nullable = false, length = 255)
+    private String link;
+
+    @ElementCollection 
+    private List<String> sizes;
+
+    @ElementCollection 
+    private List<String> images;
+
+}
+
