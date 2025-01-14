@@ -37,11 +37,11 @@ public class Product {
     @Column(nullable = false, length = 255)
     private String link;
 
-    @ElementCollection 
-    private List<String> sizes;
+    @Column(columnDefinition = "varchar[]")
+    private String[] sizes;
 
-    @ElementCollection 
-    private List<String> images;
+    @Column(columnDefinition = "varchar[]")
+    private String[] images;
 
 }
 
