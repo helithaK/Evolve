@@ -23,7 +23,7 @@ public class Product {
     private String title;
 
     @Column(nullable = false, length = 20)
-    private String shopName;
+    private String shop_name;
 
     @Column(nullable = false, length = 50)
     private String price;
