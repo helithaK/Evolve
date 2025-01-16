@@ -12,7 +12,7 @@ import com.backend.evolve.dto.ProductDTO;
 import com.backend.evolve.service.ProductService;
 
 @RestController
-@RequestMapping(value = "api/v1/product")
+@RequestMapping(value = "/v1/product")
 @CrossOrigin
 public class ProductController {
 
