@@ -12,7 +12,7 @@ import com.backend.evolve.dto.UserDTO;
 import com.backend.evolve.service.UserService;
 
 @RestController
-@RequestMapping(value = "api/v1/user")
+@RequestMapping(value = "/v1/user")
 @CrossOrigin
 public class UserController {
 

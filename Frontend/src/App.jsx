@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import FooterComponent from "./components/footer/FooterComponent";
+import BodyComponent from "./components/body/BodyComponent";
+import { Layout, List } from "antd";
+import { fetchProducts } from "../src/api/services/productService";
+import { useState, useEffect } from "react";
+import GridComponent from "./components/body/GridComponent";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const data = await fetchProducts();
+        setProducts(data);
+      } catch (err) {
+        setError("Failed to load users.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getProducts();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
-
-export default App
+    <Layout>
+      <BodyComponent>
+        <h1>Home</h1>
+        <GridComponent products={products}/>
+      </BodyComponent>
+      <FooterComponent />
+    </Layout>
+  );
+};
+export default App;
