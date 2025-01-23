@@ -3,14 +3,15 @@ import FooterComponent from "../components/footer/FooterComponent";
 import BodyComponent from "../components/body/BodyComponent";
 import { Layout, theme } from "antd";
 
-const KidsPage = () => {
+function AddUserPage() {
   return (
     <Layout>
       <BodyComponent>
-        <h1>Kids</h1>
+        <h1>Add user</h1>
       </BodyComponent>
       <FooterComponent />
     </Layout>
-  );
-};
-export default KidsPage;
+  )
+}
+
+export default AddUserPage

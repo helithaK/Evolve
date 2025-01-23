@@ -9,6 +9,7 @@ import WomenPage from "./pages/WomenPage";
 import MenPage from "./pages/MenPage";
 import KidsPage from "./pages/KidsPage";
 import LayoutParent from "./components/Layout";
+import AddUserPage from "./pages/AddUserPage";
 
 const root = document.getElementById("root");
 
@@ -19,9 +20,9 @@ ReactDOM.createRoot(root).render(
         <Route element={<LayoutParent />}>
           <Route path="/" element={<App />} />
           <Route path="/women" element={<WomenPage />} />
-          <Route path="/women/:id" element={<WomenPage />} />
           <Route path="/men" element={<MenPage />} />
           <Route path="/kids" element={<KidsPage />} />
+          <Route path="/adduser" element={<AddUserPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

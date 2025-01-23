@@ -33,4 +33,16 @@ public class ProductService {
             .map(this::convertToDTO)
             .collect(Collectors.toList());
     }
+
+    public List<ProductDTO> getProductsPerPage(int page, int limit) {
+        return productRepo
+            .getProductsPerPage(limit, limit*(page-1))
+            .stream()
+            .map(this::convertToDTO)
+            .collect(Collectors.toList());
+    }
+
+    public int getTotalProductCount() {
+        return productRepo.getTotalProductCount();
+    }
 }

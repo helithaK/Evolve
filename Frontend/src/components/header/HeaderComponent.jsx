@@ -1,21 +1,17 @@
 import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import { useNavigate } from "react-router-dom";
-import { HomeOutlined } from '@ant-design/icons';
+import { HomeOutlined, UserOutlined } from "@ant-design/icons";
 
 const { Header } = Layout;
 
 function HeaderComponent() {
-  const [current, setCurrent] = useState('');
+  const [current, setCurrent] = useState("");
   const navigate = useNavigate();
 
   const onClickMenu = (item) => {
-    
     setCurrent(item.key);
-    
     navigate(`/${item.key}`);
-    
-    console.log("Selected Key:", item.key);
   };
 
   const items = [
@@ -23,6 +19,7 @@ function HeaderComponent() {
     { key: "women", label: `Women` },
     { key: "men", label: `Men` },
     { key: "kids", label: `Kids` },
+    { key: "adduser", label: <UserOutlined /> },
   ];
 
   return (
@@ -34,10 +31,9 @@ function HeaderComponent() {
         position: "fixed",
         width: "100vw",
         top: "0",
-        left:"0"
+        left: "0",
       }}
     >
-      <div className="demo-logo" />
       <Menu
         theme="dark"
         mode="horizontal"
